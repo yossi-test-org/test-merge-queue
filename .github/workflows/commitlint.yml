@@ -8,7 +8,10 @@ jobs:
   lint-commit-name:
     runs-on: ubuntu-latest
     steps:
-      - uses: wagoid/commitlint-github-action@v5
+      - uses: actions/checkout@v4
         with:
-          commitDepth: 1
+          fetch-depth: 1
+      - name: Show commit message
+        run: git log -1 --pretty=%B
+      - uses: wagoid/commitlint-github-action@v5
   
