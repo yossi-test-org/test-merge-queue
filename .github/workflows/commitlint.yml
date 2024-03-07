@@ -8,12 +8,12 @@ jobs:
   lint-commit-name:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-          # ref: ${{ github.event.pull_request.head.sha }}
-      - name: Show commit message
-        run: git log -1 --pretty=%B
+      # - uses: actions/checkout@v4
+      #   with:
+      #     fetch-depth: 1
+      #     # ref: ${{ github.event.pull_request.head.sha }}
+      # - name: Show commit message
+      #   run: git log -1 --pretty=%B
       - uses: wagoid/commitlint-github-action@v5
         with:
           commitDepth: 5
