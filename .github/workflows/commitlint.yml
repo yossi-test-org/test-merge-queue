@@ -1,19 +1,22 @@
 name: Lint merge commit name
 
 on:
-  pull_request:
+  push:
+    branches-ignore:
+      - "master"
   merge_group:
-    types: [checks_requested]
-
+#
 jobs:
   lint-commit-name:
-    if: ${{ github.event_name == 'merge_group' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-      - name: Show commit message
-        run: git log -1 --pretty=%B
+      # - uses: actions/checkout@v4
+      #   with:
+      #     fetch-depth: 1
+      #     # ref: ${{ github.event.pull_request.head.sha }}
+      # - name: Show commit message
+      #   run: git log -1 --pretty=%B
       - uses: wagoid/commitlint-github-action@v5
+        with:
+          commitDepth: 1
   
