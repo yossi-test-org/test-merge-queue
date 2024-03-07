@@ -2,8 +2,8 @@ name: Lint merge commit name
 
 on:
   push:
-    branches:
-      - "gh-readonly-queue/master/**"
+    branches-ignore:
+      - "master"
 
 jobs:
   lint-commit-name:
