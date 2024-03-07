@@ -2,12 +2,12 @@ name: Lint merge commit name
 
 on:
   push:
-    branches-ignore:
-      - "master"
+    branches:
+      - "gh-readonly-queue/master/**"
 
 jobs:
   lint-commit-name:
-    if: startsWith(github.head_ref, 'gh-readonly-queue/master/')
+    if: startsWith(github.ref, 'gh-readonly-queue/master/')
     runs-on: ubuntu-latest
     steps:
       # - uses: actions/checkout@v4
