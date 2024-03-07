@@ -6,7 +6,6 @@ on:
       - "master"
   merge_group:
 
-#
 jobs:
   lint-commit-name:
     runs-on: ubuntu-latest
