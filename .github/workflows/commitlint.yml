@@ -19,5 +19,5 @@ jobs:
       #   run: git log -1 --pretty=%B
       - uses: wagoid/commitlint-github-action@v5
         with:
-          commitDepth: 3
+          commitDepth: 1
   
