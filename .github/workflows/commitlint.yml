@@ -3,7 +3,7 @@ name: Lint merge commit name
 on:
   pull_request:
   merge_group:
-#
+
 jobs:
   lint-commit-name:
     runs-on: ubuntu-latest
@@ -16,5 +16,5 @@ jobs:
       #   run: git log -1 --pretty=%B
       - uses: wagoid/commitlint-github-action@v5
         with:
-          commitDepth: 10
+          commitDepth: 1
   
