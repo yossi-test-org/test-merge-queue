@@ -1,12 +1,10 @@
 name: Lint merge commit name
 
 on:
-  pull_request:
+  push:
+    branches-ignore:
+      - "master"
   merge_group:
-
-permissions:
-  contents: read
-  pull-requests: read
 
 #
 jobs:
