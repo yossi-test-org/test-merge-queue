@@ -11,7 +11,7 @@ jobs:
     steps:
       - run: echo ${{ github.ref }}
   lint-commit-name:
-    if: startsWith(github.ref, 'gh-readonly-queue/master/')
+    if: contains(github.ref, 'gh-readonly-queue/master/')
     runs-on: ubuntu-latest
     steps:
       # - uses: actions/checkout@v4
