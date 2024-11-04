@@ -1,26 +1,25 @@
 name: Lint merge commit name
 
 on:
-  push:
-    branches-ignore:
-      - "master"
+  merge_group:
+    types: [checks_requested]
 
 jobs:
-  print-commit-name:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo ${{ github.ref }}
   lint-commit-name:
-    if: startsWith(github.ref, 'gh-readonly-queue/master/')
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v4
-      #   with:
-      #     fetch-depth: 1
-      #     # ref: ${{ github.event.pull_request.head.sha }}
-      # - name: Show commit message
-      #   run: git log -1 --pretty=%B
-      - uses: wagoid/commitlint-github-action@v5
+      - uses: actions/checkout@v4
         with:
-          commitDepth: 1
-  
+          fetch-depth: 1
+      
+      - name: Debug - Show event info
+        run: |
+          echo "Event name: ${{ github.event_name }}"
+          echo "Event type: ${{ github.event.action }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "SHA: ${{ github.sha }}"
+          
+      - name: Debug - Show commit message
+        run: git log -1 --pretty=%B
+          
+      - uses: wagoid/commitlint-github-action@v5
