@@ -1,4 +1,4 @@
-name: Lint merge commit name
+name: Lint merge commit name2
 
 on:
   pull_request:
@@ -22,3 +22,5 @@ jobs:
         run: git log -1 --pretty=%B
           
       - uses: wagoid/commitlint-github-action@v6
+        with:
+          commitDepth: 1
