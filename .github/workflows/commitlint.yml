@@ -2,6 +2,7 @@ name: Lint merge commit nameeee
 
 on:
   pull_request:
+    types: [ "opened", "synchronize" ]
     branches: [ "master" ]
   merge_group:
 
@@ -10,9 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-      
       - name: Debug - Show event info
         run: |
           echo "Event name: ${{ github.event_name }}"
