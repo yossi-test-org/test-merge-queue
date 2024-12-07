@@ -1,24 +1,20 @@
-name: Lint merge commit name
+name: Commit Lint Test
 
 on:
-  pull_request:
-    types: [ "opened", "synchronize" ]
-    branches: [ "master" ]
   merge_group:
+    branches:
+      - master
+    types:
+      - checks_requested
 
 jobs:
-  lint-commit-name:
+  commitlint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Debug - Show event info
-        run: |
-          echo "Event name: ${{ github.event_name }}"
-          echo "Event type: ${{ github.event.action }}"
-          echo "Ref: ${{ github.ref }}"
-          echo "SHA: ${{ github.sha }}"
-          
-      - name: Debug - Show commit message
-        run: git log -1 --pretty=%B
-          
-      - uses: wagoid/commitlint-github-action@v6
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Run Commitlint Action from Fork
+        uses: YossiSaadi/commitlint-github-action@feat/support-merge_group-event-squashed-commit
