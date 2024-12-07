@@ -3,7 +3,7 @@ name: Commit Lint Test
 on:
   merge_group:
     branches:
-      - main
+      - master
     types:
       - checks_requested
 
