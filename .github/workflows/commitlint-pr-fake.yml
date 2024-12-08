@@ -1,0 +1,15 @@
+name: Commit Lint Test (MOCK PR)
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.sha }}
